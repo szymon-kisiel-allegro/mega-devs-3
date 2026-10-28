@@ -4,7 +4,7 @@ title: '#4471 · one ticket per problem'
 owner: Szymon Kisiel
 status: open
 reviewed: 2026-10-28
-signature: Szymon Kisiel
+signature: v1.eyJzdWIiOiIyOTAyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxODIyNzksImV4cCI6MTc5MzI2ODY3OX0.jTuPXf0a2M9UpQlCY4cs6BW5-Lx9GBOiHbbTpypRE-A
 ---
 
 <script>
