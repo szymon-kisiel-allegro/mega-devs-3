@@ -1,0 +1,67 @@
+---
+layout: runbook
+title: '#4471 · one ticket per problem'
+owner: Szymon Kisiel
+status: open
+reviewed: 2026-10-28
+signature: Szymon Kisiel
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import ReportQuote from '#lib/kb/ReportQuote.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/szymon-kisiel-allegro/mega-devs-3';
+  const tickets = [
+    { problem: 'parser', title: 'Day and month swap in the shared parser', ref: 'mega-devs-3#1', href: `${repo}/issues/1` },
+    { problem: 'hint', title: 'The booking-v3 form hint says MM/DD/YYYY', ref: 'mega-devs-3#2', href: `${repo}/issues/2` },
+    { problem: 'one-day', title: 'Dates move by one day', ref: 'mega-devs-3#3', href: `${repo}/issues/3` },
+  ];
+</script>
+
+[#4471](/kb/incidents/4471) holds every report about dates and calls it one issue with one fix.
+Its own table already says otherwise. Read report by report, the reports show separate problems
+with separate fixes, and each now has a ticket of its own.
+
+<ProblemTable ticket={4471} {tickets} />
+
+<Callout kind="warn">
+The parser fix closes the parser ticket only. The form hint and the one-day moves stay broken
+until each gets its own fix.
+</Callout>
+
+## Day and month swap: the parser
+
+The shared parser reads every date month first, and every tenant on file writes the day first, so
+7 April comes back as 4 July. It reaches people through the app, by email and through the
+booking-v2 form.
+
+<ReportQuote id="R-41200" />
+
+## The booking-v3 form hint
+
+booking-v3 prints `MM/DD/YYYY` under its date field. People type the month first, as the hint
+tells them, and the form reads the day first. It hits only bookings made through that form, on
+tenants that run booking-v3. The parser fix does not reach it: the hint has to say what the form
+reads.
+
+<ReportQuote id="R-41230" />
+
+## Dates that move by one day
+
+Not a swap: the date lands one day off, and one meeting can land on two days for people in two
+places. It looks like a time zone shift; that is not confirmed. The desk already lists these
+reports in its notes, but the kb files them under the parser by tenant and only footnotes them.
+
+<ReportQuote id="R-41344" />
+
+## How the reports were split
+
+- One report per id. The export repeats some rows, so rows are not reports.
+- The desk's one-day list first, then the cause by tenant and way in (`causes.ts`).
+- Never the intake tag. Intake guesses from the reporter's browser: every en-US browser was tagged `hint`.
+- Every report lands in exactly one row. The table's last line checks the rows against #4471.
+
+<RenderStamp {signature} />
