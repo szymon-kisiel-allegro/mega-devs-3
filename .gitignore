@@ -1,0 +1,4 @@
+node_modules/
+.svelte-kit/
+# Versions are pinned in package.json; the lockfile would carry this machine's private registry URLs.
+package-lock.json
