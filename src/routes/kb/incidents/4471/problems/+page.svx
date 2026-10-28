@@ -52,16 +52,18 @@ reads.
 ## Dates that move by one day
 
 Not a swap: the date lands one day off, and one meeting can land on two days for people in two
-places. It looks like a time zone shift; that is not confirmed. The desk already lists these
-reports in its notes, but the kb files them under the parser by tenant and only footnotes them.
+places. It looks like a time zone shift; that is not confirmed. The desk lists these reports in its
+notes and counts them where it files them, under the parser, so the table counts them in both rows.
+The parser fix does not reach them.
 
 <ReportQuote id="R-41344" />
 
-## How the reports were split
+## How the reports were counted
 
+- The desk's way, as its own view counts them: each report under its cause, from tenant and way in (`causes.ts`).
 - One report per id. The export repeats some rows, so rows are not reports.
-- The desk's one-day list first, then the cause by tenant and way in (`causes.ts`).
+- The reports the desk reads as one-day moves (`desk-notes.json`) stay counted under the parser, where they are filed, and have a row and a ticket of their own.
 - Never the intake tag. Intake guesses from the reporter's browser: every en-US browser was tagged `hint`.
-- Every report lands in exactly one row. The table's last line checks the rows against #4471.
+- The table's last line checks that every report in #4471 sits under one cause.
 
 <RenderStamp {signature} />
